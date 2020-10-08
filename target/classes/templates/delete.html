@@ -1,0 +1,43 @@
+<div class="modal fade" th:attr="id='deleteUser'+${toDelete.id}" xmlns:th="http://www.w3.org/1999/xhtml">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <form th:action="@{/delete}" method="get" th:object="${toDelete}">
+                <input type="hidden" th:field="*{password}" th:value="${toDelete.password}">
+                <div class="modal-header">
+                    <h5>Edit user</h5>
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close"><span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body col-8 offset-2">
+                    <div class="form-group text-center">
+                        <label><b>ID</b></label>
+                        <input type="text" class="form-control"
+                               th:field="*{id}" readonly="readonly">
+                    </div>
+                    <div class="form-group text-center">
+                        <label><b>Name</b></label>
+                        <input type="text" class="form-control"
+                               th:field="*{name}" readonly="readonly">
+                    </div>
+                    <div class="form-group text-center">
+                        <label><b>Email</b></label>
+                        <input type="email" class="form-control"
+                               th:field="*{email}" readonly="readonly">
+                    </div>
+                    <div class="form-group text-center">
+                        <label><b>Role</b></label>
+                        <select multiple class="form-control" th:field="*{roles}" size="2">
+                            <option value="1">ADMIN</option>
+                            <option value="2">USER</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-danger success">Delete</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
