@@ -1,34 +1,111 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.thymeleaf.org ">
+<html lang="en">
 <head>
-    <meta charset="UTF-8" xmlns:th="http://www.thymeleaf.org">
-    <title></title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="https://yastatic.net/jquery/3.3.1/jquery.js"></script>
+
+    <style>
+        .custom-navbar {
+            margin-bottom: 20px;
+            background-color: #31373e;
+            height: 45px;
+        }
+
+        .custom-navbar a {
+            color: #82888b;
+        }
+
+        .custom-navbar a:hover {
+            color: #babcbe;
+            text-decoration: none;
+        }
+
+        .email {
+            color: #ffffff;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .role {
+            color: #fff;
+            font-size: 18px;
+        }
+
+        .padding-left-zero {
+            padding-left: 0;
+        }
+
+        .padding-left-zero a {
+            height: 40px;
+        }
+    </style>
+
+    <title>Admin panel</title>
+
 </head>
 <body>
+<nav class="navbar navbar-default custom-navbar padding-left-zero">
+    <div class="container-fluid">
+        <ul class="nav list-group list-group-horizontal">
+            <li><p class="email">[[${currentUser.email}]]&#160</p></li>
+            <li><p class="role">with roles:&#160</p></li>
+            <li><p class="role">[[${role}]]</p></li>
+        </ul>
+        <ul>
+            <a class="custom-a" th:href="@{/logout}">Logout</a>
+        </ul>
+    </div>
+</nav>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-2 padding-left-zero">
+            <a class="btn btn-linked btn-block" role="button"
+                               th:href="@{/admin}">
 
-<p></p>
-<div align="center">
-    <h1>User's Profile</h1>
-    <table border="0" cellpadding="10">
-        <tr>
-            <td>Id:</td>
-            <td th:text="${user.id}"></td>
-        </tr>
-        <tr>
-            <td>Name:</td>
-            <td th:text="${user.name}"></td>
-        </tr>
-        <tr>
-            <td>Email:</td>
-            <td th:text="${user.email}"></td>
-        </tr>
-        <tr>
-            <td>Roles:</td>
-            <td th:text="${user.roles}"></td>
-        </tr>
+                <p class="text-left text-capitalize">admin</p>
+            </a>
+            <a class="btn btn-primary btn-block" role="button"
+                               th:href="@{/user}">
+                <p class="text-left text-capitalize">user</p>
+            </a>
+        </div>
+        <div class="col-10">
+            <h1>User information-page</h1>
+            <br>
+            <div class="container-fluid">
+                <h5>About user</h5>
+                <br>
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Roles</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td th:id="ccc">[[${currentUser.id}]]</td>
+                        <td th:email="cccc">[[${currentUser.email}]]</td>
+                        <td th:name="cccc">[[${currentUser.name}]]</td>
+                        <td th:roles="cccc">[[${currentUser.roles}]]</td>
 
-    </table>
-    <button type="button"><a href="/logout">Logout</a></button>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>

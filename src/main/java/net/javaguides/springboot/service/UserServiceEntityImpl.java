@@ -4,6 +4,7 @@ import net.javaguides.springboot.dao.RoleDao;
 import net.javaguides.springboot.dao.UserDao;
 import net.javaguides.springboot.models.Role;
 import net.javaguides.springboot.models.User;
+import net.javaguides.springboot.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -70,6 +71,12 @@ public class UserServiceEntityImpl implements UserService, UserDetailsService {
     public List<Role> getAllRoles(){
         return roleDao.getAllRoles();
     }
+
+    @Override
+    public User getByEmail(String email){
+        return userDao.getUserByEmail(email);
+    }
+
 
     @Transactional
     @PostConstruct
